@@ -13,7 +13,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private boolean imported;
-    private BigDecimal tax = new BigDecimal(BigInteger.ZERO,2);
+    private BigDecimal tax = new BigDecimal(BigInteger.ZERO, 2);
     private boolean exempted;
     private int quantity;
     private static final List<String> medical = Arrays.asList("pill", "pills", "headache", "pain", "medical");
@@ -37,7 +37,7 @@ public class Product {
         this.description = this.description.substring(this.description.indexOf(' ') + 1);
         this.price = new BigDecimal(description.split(" at ")[1]);
 
-        if (this.price.compareTo(new BigDecimal("0")) == -1) {
+        if (this.price.compareTo(new BigDecimal("0.00")) < 0) {
             throw new IllegalArgumentException("Price must be positive");
         }
 
@@ -64,7 +64,7 @@ public class Product {
     }
 
     private static BigDecimal round(BigDecimal value, BigDecimal increment,
-                               RoundingMode roundingMode) {
+            RoundingMode roundingMode) {
         if (increment.signum() == 0) {
             // 0 increment does not make much sense, but prevent division by 0
             return value;
@@ -85,6 +85,10 @@ public class Product {
         }
 
         this.tax = round(this.tax, new BigDecimal("0.05"), RoundingMode.UP);
+    }
+
+    public String toString() {
+        return String.format("%d %s: %s", this.quantity, this.description, this.price.add(this.tax));
     }
 
     public int getQuantity() {

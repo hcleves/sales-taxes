@@ -17,7 +17,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertFalse(product.isImported());
         BigDecimal tax = new BigDecimal("0.00");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertTrue(product.isExempted());
         assertEquals(1, product.getQuantity());
     }
@@ -30,7 +30,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertTrue(product.isImported());
         BigDecimal tax = new BigDecimal("0.65");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertEquals(2, product.getQuantity());
     }
 
@@ -38,6 +38,7 @@ public class ProductTest {
     public void itemWithTwoAts() {
         try {
             Product product = new Product("1 imported at book at 12.49");
+            assertTrue(false);
         } catch (NumberFormatException e) {
             assertTrue(true);
         }
@@ -47,6 +48,7 @@ public class ProductTest {
     public void itemWithNoAts() {
         try {
             Product product = new Product("1 imported book 12.49");
+            assertTrue(false);
         } catch (ArrayIndexOutOfBoundsException e) {
             assertTrue(true);
         }
@@ -60,7 +62,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertFalse(product.isImported());
         BigDecimal tax = new BigDecimal("1.50");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertFalse(product.isExempted());
         assertEquals(3, product.getQuantity());
     }
@@ -69,8 +71,9 @@ public class ProductTest {
     public void ItemWithZeroPrice() {
         try {
             Product product = new Product("5 music CD at 0.00");
+            assertTrue(true);
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), "Price must be positive");
+            assertTrue(false);
         }
     }
 
@@ -78,6 +81,7 @@ public class ProductTest {
     public void ItemWithNegativePrice() {
         try {
             Product product = new Product("5 music CD at -1.00");
+            assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "Price must be positive");
         }
@@ -87,6 +91,7 @@ public class ProductTest {
     public void ItemWithMissingPrice() {
         try {
             Product product = new Product("5 music CD at");
+            assertTrue(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             assertTrue(true);
         }
@@ -100,7 +105,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertTrue(product.isImported());
         BigDecimal tax = new BigDecimal("2.25");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertFalse(product.isExempted());
         assertEquals(3, product.getQuantity());
     }
@@ -109,6 +114,7 @@ public class ProductTest {
     public void ItemWithZeroQuantity() {
         try {
             Product product = new Product("0 music CD at 14.99");
+            assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "Quantity must be greater than 0");
         }
@@ -118,6 +124,7 @@ public class ProductTest {
     public void ItemWithNegativeQuantity() {
         try {
             Product product = new Product("-1 music CD at 14.99");
+            assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "Quantity must be greater than 0");
         }
@@ -127,6 +134,7 @@ public class ProductTest {
     public void ItemWithMissingQuantity() {
         try {
             Product product = new Product("music CD at 14.99");
+            assertTrue(false);
         } catch (NumberFormatException e) {
             assertTrue(true);
         }
@@ -140,7 +148,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertFalse(product.isImported());
         BigDecimal tax = new BigDecimal("0.00");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertTrue(product.isExempted());
         assertEquals(1, product.getQuantity());
     }
@@ -153,7 +161,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertTrue(product.isImported());
         BigDecimal tax = new BigDecimal("0.50");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertTrue(product.isExempted());
         assertEquals(1, product.getQuantity());
     }
@@ -166,7 +174,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertFalse(product.isImported());
         BigDecimal tax = new BigDecimal("0.00");
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertTrue(product.isExempted());
         assertEquals(1, product.getQuantity());
     }
@@ -179,7 +187,7 @@ public class ProductTest {
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         BigDecimal tax = new BigDecimal("0.05");
         assertEquals(tax, product.getTax());
-        assertEquals(tax.stripTrailingZeros(),product.getTax().stripTrailingZeros());
+        assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertTrue(product.isExempted());
         assertEquals(1, product.getQuantity());
     }
