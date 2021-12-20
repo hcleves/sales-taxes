@@ -38,7 +38,7 @@ public class ReceiptTest {
                             "1 imported box of chocolates at 10.00\n" +
                             "1 imported bottle of perfume at 47.50");
             assertTrue(false);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
             assertTrue(true);
         }
     }

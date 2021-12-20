@@ -13,7 +13,7 @@ public class Receipt {
     public Receipt(String text) {
         List<String> lines = Arrays.asList(text.split("\n"));
         for (String line : lines) {
-            Product product = new Product(line);
+            Product product = new Product(line.trim());
             products.add(product);
         }
         calculateTaxAndPrices();
