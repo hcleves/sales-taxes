@@ -72,3 +72,16 @@ Output 3:
 Sales Taxes: 6.70
 Total: 74.68
 ```
+
+## Architecture
+
+This program consists in three classes:
+
+### Product
+This class is responsible for receiving a string representing the product and extracting data from it. Then, it is responsible for validating the data, classifing the product in the types given (imported, medical, food, books) and calculating the tax for the product
+
+## Receipt
+This class is responsible for receiving an input string and parsing it to feed to the Product class. It also is responsible for returning a string formatted like the output.
+
+## App
+This class is the entry point of the program. It is responsible from receiving the command line arguments, verifying them and feeding the Receipt class with data from the file input. It also redirects the output of the Receipt class either to stdout or to a file indicated by the user.
