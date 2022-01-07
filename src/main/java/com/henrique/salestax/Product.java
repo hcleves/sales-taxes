@@ -36,6 +36,7 @@ public class Product {
         this.description = description.split(" at ")[0];
         this.description = this.description.substring(this.description.indexOf(' ') + 1);
         this.price = new BigDecimal(description.split(" at ")[1]);
+        this.price = this.price.multiply(new BigDecimal(this.quantity));
 
         if (this.price.compareTo(new BigDecimal("0.00")) < 0) {
             throw new IllegalArgumentException("Price must be positive");
