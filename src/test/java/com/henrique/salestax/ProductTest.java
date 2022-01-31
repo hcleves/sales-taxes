@@ -26,10 +26,10 @@ public class ProductTest {
     public void validImportedBook() {
         Product product = new Product("2 imported book at 12.49");
         assertEquals("imported book", product.getDescription());
-        BigDecimal price = new BigDecimal("12.49");
+        BigDecimal price = new BigDecimal("24.98");
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertTrue(product.isImported());
-        BigDecimal tax = new BigDecimal("0.65");
+        BigDecimal tax = new BigDecimal("1.25");
         assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertEquals(2, product.getQuantity());
     }
@@ -58,10 +58,10 @@ public class ProductTest {
     public void ValidNonExemptedItem() {
         Product product = new Product("3 music CD at 14.99");
         assertEquals("music CD", product.getDescription());
-        BigDecimal price = new BigDecimal("14.99");
+        BigDecimal price = new BigDecimal("44.97");
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertFalse(product.isImported());
-        BigDecimal tax = new BigDecimal("1.50");
+        BigDecimal tax = new BigDecimal("4.50");
         assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertFalse(product.isExempted());
         assertEquals(3, product.getQuantity());
@@ -101,10 +101,10 @@ public class ProductTest {
     public void ValidNonExemptedImportedItem() {
         Product product = new Product("3 imported music CD at 14.99");
         assertEquals("imported music CD", product.getDescription());
-        BigDecimal price = new BigDecimal("14.99");
+        BigDecimal price = new BigDecimal("44.97");
         assertEquals(price.stripTrailingZeros(), product.getPrice().stripTrailingZeros());
         assertTrue(product.isImported());
-        BigDecimal tax = new BigDecimal("2.25");
+        BigDecimal tax = new BigDecimal("6.75");
         assertEquals(tax.stripTrailingZeros(), product.getTax().stripTrailingZeros());
         assertFalse(product.isExempted());
         assertEquals(3, product.getQuantity());
